@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+    .fa{
+        font-size: 20px;
+    }
+</style>
+<body>
+    <!-- Start Footer-->
+  <footer class="container-fluid bg-dark text-white mt-5" style="border-top: 5px solid forestgreen;">
+    <div class="container">
+      <!-- Start Footer Container -->
+      <div class="row py-3">
+        <!-- Start Footer Row -->
+        <div class="col-md-6">
+          <!-- Start Footer 1st Column -->
+          <span class="pr-2">Follow Us: </span>
+          <a href="#" target="_blank" class="fa fa-facebook-square"><i></i></a>
+          <a href="#" target="_blank" class="fa fa-twitter"><i></i></a>
+          <a href="#" target="_blank" class="fa fa-youtube-play"><i></i></a>
+          <a href="#" target="_blank" class="fa fa-google-plus-square"><i></i></a>
+        </div> <!-- End Footer 1st Column -->
+
+        <div class="col-md-6 text-right">
+          <!-- Start Footer 2nd Column -->
+          <small> Designed by Rakesh Kumar Sahoo &copy; 2018.
+          </small>
+          <small><a href="{% url 'admin_login' %}" style="text-decoration: none;color: darkolivegreen">Admin Login</a></small>
+        </div> <!-- End Footer 2nd Column -->
+      </div> <!-- End Footer Row -->
+    </div> <!-- End Footer Container -->
+  </footer> <!-- End Footer -->
+</body>
+</html>

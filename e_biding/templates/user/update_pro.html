@@ -1,0 +1,78 @@
+{% extends 'user/seller.html' %}
+
+{% block sellerbody %}
+    <div class="container" style="padding: 10px">
+    <center>
+        <div class="row">
+            <div class="offset-4 col-md-3">
+                <h2 style="float: right">Update Product</h2>
+            </div>
+            <div class="col-md-4">
+                <form method="post" action="{% url 'update_pro' %}">
+                    {% csrf_token %}
+                    <button type="submit" style="float: right" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
+                <input type="text" placeholder="Search product" name="pid" style="float: right;padding: 6px;border-radius: 5px;border: 1px solid #486dff">
+                <small style="float: right;margin-right: 60px;color: #4d69eb">Product ID Number here.</small>
+                </form>
+            </div>
+        </div><hr>
+    </center>
+    {% if msg %}
+        <p style="text-align:center;background-color: #ccffd0;border: 1px dotted #4dff4d">{{ msg }}</p>
+    {% endif %}
+        {% if pro %}
+            <div class="row">
+                <div class="col-md-6" style="border-right: 1px solid green">
+                    <center>
+                    <img src="{{ pro.image1.url }}" style="padding: 10px;border: 5px solid whitesmoke">
+                    <br><b>{{ pro.p_name }}</b>
+                        </center>
+                </div>
+            <div class="col-md-6">
+                <form method="post" action="{% url 'update' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Product Name</h5><input type="text" value="{{ pro.p_name }}" name="p_name" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Product Title</h5><input type="text" value="{{ pro.title }}" name="title" class="form-control">
+                            <input type="text" value="{{ pro.p_status }}" name="p_status" hidden>
+                            <input type="number" value="{{ pro.user_id }}" name="user_id" hidden>
+                            <input type="number" value="{{ pro.p_id }}" name="pid" hidden>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Product Price</h5><input type="number" value="{{ pro.bid_price }}" name="p_price" class="form-control">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-4" style="border-right: 2px solid #628064">
+                            <h5>Product Image1</h5><input type="file" name="image1" style="font-size: 12px" required>
+                        </div>
+                        <div class="col-md-4" style="border-right: 2px solid #628064">
+                            <h5>Product Image2</h5><input type="file" name="image2" style="font-size: 12px" required>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Product Image3</h5><input type="file" name="image3" style="font-size: 12px" required>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Product Description</h5>
+                            <textarea name="p_desc" class="form-control">{{ pro.disc }}</textarea>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-12">
+                           <button type="submit" class="btn btn-warning">Update Product</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}

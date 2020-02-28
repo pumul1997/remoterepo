@@ -1,0 +1,41 @@
+{% extends 'user/seller.html' %}
+
+{% block sellerbody %}
+    <div class="container" style="padding: 10px">
+    <form style="font-size: 20px" action="{% url 'add_product' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="offset-2 col-md-8">
+                <label>Product Name:</label>
+                <input type="text" placeholder="Product Name" class="form-control" name="pname">
+                <label>Product Price:</label>
+                <input type="number" placeholder="Product Price" class="form-control" name="pprice">
+                <label>Product Title:</label>
+                <input type="text" placeholder="Product Title" class="form-control" name="ptitle">
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-2 col-md-3">
+                <label>Image1 :</label>
+                <input type="file" style="font-size: 15px" name="image1">
+            </div>
+            <div class="col-md-3">
+                <label>Image2 :</label>
+                <input type="file" style="font-size: 15px" name="image2">
+            </div>
+            <div class="col-md-2">
+                <label>Image3 :</label>
+                <input type="file" style="font-size: 15px" name="image3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-2 col-md-8">
+                <label>Description :</label>
+                <textarea class="form-control" style="height: 100px" placeholder="Product details here...." name="pdesc"></textarea>
+                <br><button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-danger">Clear</button>
+            </div>
+        </div>
+    </form>
+    </div>
+{% endblock %}

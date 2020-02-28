@@ -1,0 +1,45 @@
+{% extends 'admin/slide_bar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+{% block adminbody %}
+     <nav class="col-md-10" style="margin-top: 30px">
+     <center>
+         <h2><b>Complains</b></h2><hr>
+      {% if msg %}
+        <p style="text-align: center;margin-top: 30px;background-color: #ccffcc;border: 1px dotted #4dff4d">{{ msg }}</p>
+      {% endif %}
+     {% for y in messages %}
+     <p style="text-align: center;margin-top: 30px;background-color: #ccffcc;border: 1px dotted #4dff4d">{{ y }}</p>
+     {% endfor %}
+
+     {% if complains %}
+     <table class="table table-bordered table-hover">
+         <tr class="bg-info">
+             <th>NAME</th>
+             <th>EMAIL ID</th>
+             <th>SUBJECT</th>
+             <th>DESCRIPTION</th>
+             <th>REMOVE</th>
+         </tr>
+         {% for x in complains %}
+         <tr>
+         <td>{{ x.name }}</td>
+         <td>{{ x.email }}</td>
+         <td>{{ x.subject }}</td>
+         <td>{{ x.description }}</td>
+         <td>
+             <a href="{% url 'del_complain' x.id %}" class="btn btn-danger">&cross;</a>
+         </td>
+         </tr>
+         {% endfor %}
+     </table>
+     {% endif %}
+     </center>
+     </nav>
+{% endblock %}
+</body>
+</html>

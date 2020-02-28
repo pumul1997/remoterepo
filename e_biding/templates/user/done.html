@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'user/user_slidebar.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block userbody %}
+     <nav class="col-md-10" style="margin-top: 50px;">
+     <center>
+     <h3>{{ msg.msg }}</h3><hr>
+     <a class="btn btn-primary" href="{% url 'my_cart' %}">Go Back</a>
+</center>
+     </nav>
+{% endblock %}
+</body>
+</html>

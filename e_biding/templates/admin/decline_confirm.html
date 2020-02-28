@@ -1,0 +1,18 @@
+{% extends 'admin/slide_bar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+{% block adminbody %}
+     <nav class="col-md-10" style="margin-top: 70px">
+     <center>
+         <h2>Are you sure want to declined <b style="color: red;">{{ name }}</b> user.</h2><hr>
+         <a href="{% url 'decline_confirm' id %}" class="btn btn-danger">Yes</a>
+         <a href="{% url 'declined_req' %}" class="btn btn-primary">Go back</a>
+     </center>
+     </nav>
+{% endblock %}
+</body>
+</html>

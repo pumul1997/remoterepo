@@ -1,0 +1,41 @@
+{% extends 'user/seller.html' %}
+
+{% block sellerbody %}
+    <div class="container" style="padding: 10px">
+    <h2 style="text-align: center">Bidding Product's</h2>
+    {% for i in messages %}
+        <p>{{ i }}</p>
+    {% endfor %}
+    {% if bpro %}
+    <table class="table table-bordered" style="text-align: center">
+        <tr class="bg-secondary" style="color: rgba(0,0,255,0.46)">
+            <th>Product</th>
+            <th>Product Name</th>
+            <th>Title</th>
+            <th>Start Price</th>
+            <th>Desc</th>
+            <th>Status</th>
+        </tr>
+        {% for x in bpro %}
+        <tr>
+        <td>
+            <a href="{% url 'bidding_details' x.p_id %}">
+                <img src="{{ x.image1.url }}" height="100" width="50"></a></td>
+        <td>{{ x.title }}</td>
+        <td>{{ x.bid_price }}</td>
+        <td>{{ x.p_name }}</td>
+        <td>{{ x.disc }}</td>
+        <td>
+                    <a href="{% url 'bidding_details' x.p_id %}" class="btn btn-primary" style="color: white;margin-bottom: 5px">
+                    <span class="spinner-border spinner-border-sm"></span>
+                        Bidding..</a>
+                    <br><a href="{% url 'stop_bid' x.p_id %}" class="btn btn-danger">Stop Bid</a>
+        </td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+    {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'admin/slide_bar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+{% block adminbody %}
+     <nav class="col-md-10" style="margin-top: 30px">
+      {% if msg %}
+        <p style="text-align: center;padding: 10px;margin-top: 30px;background-color: #ccffcc;border: 1px dotted #4dff4d">{{ msg }}{{ data.name }}</p>
+      {% endif %}
+     <img src="{{ data.image.url }}" class="rounded-circle" style="border: 2px solid #4dff4d;margin-left: 380px;height: 400px" alt="Admin Image">
+     <br><h3 style="text-align: center;color: blue">{{ data.name }}</h3>
+     </nav>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'user/seller.html' %}
+
+{% block sellerbody %}
+    <div class="container" style="padding: 10px">
+    <h2 style="text-align: center">Sold Product's</h2>
+    {% for i in messages %}
+        <p>{{ i }}</p>
+    {% endfor %}
+    {% if spro %}
+    <table class="table table-bordered">
+        <tr class="bg-secondary" style="color: rgba(0,0,255,0.46)">
+            <th>Product</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Start Price</th>
+            <th>Description</th>
+        </tr>
+        {% for x in spro %}
+        <tr>
+            <td><a href="">
+                <img src="{{ x.image1.url }}" height="50" width="30"></a></td>
+        <td>{{ x.p_name }}</td>
+        <td>{{ x.title }}</td>
+        <td>{{ x.bid_price }}</td>
+            <td>{{ x.disc }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'user/user_slidebar.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block userbody %}
+     <nav class="col-md-10" style="margin-top: 50px">
+     <center>
+
+             <img src="{{ data.image.url }}" style="border: 10px solid floralwhite" height="400px" width="450px">
+
+         <form method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
+             {% csrf_token %}
+             <h3>Update Photo :</h3>
+             <input type="file" name="a1" style="border: 1px solid green;margin-bottom: 10px"><br>
+             <input type="submit" class="btn btn-warning" value="Upload" style="margin-bottom: -30px">
+             <a href="{% url 'profile' %}" class="btn btn-primary" style="margin-bottom: -30px">Go Back</a>
+         </form>
+
+     </center>
+     </nav>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'user/user_slidebar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block userbody %}
+     <nav class="col-md-10" style="margin-top: 30px">
+
+     <h2 style="text-align: center">Change Password</h2><hr>
+     <div class="row">
+         <div class="offset-3 col-md-5">
+     <form method="post" action="{% url 'user_change_pass' %}">
+     {% csrf_token %}
+         <p style=""><b>Old Password :</b></p>
+         <input type="password" class="form-control" name="old"><br>
+         {% if msg1 %}
+             <p style="color: red">{{ msg1 }}</p>
+         {% endif %}
+         <p style=""><b>New Password :</b></p>
+         <input type="password" class="form-control" name="new1"><br>
+         {% if msg2 %}
+             <p style="color: red">{{ msg2 }}</p>
+         {% endif %}
+         <p style=""><b>Confirm Password :</b></p>
+         <input type="password" class="form-control" name="new2"><br>
+         <input type="submit" class="btn btn-warning" value="Change Password">
+         <small style="margin-left: 20px;color: darkslateblue">Don't share your password with anyone.</small>
+     </form>
+
+         </div>
+     </div>
+     </nav>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'user/seller.html' %}
+
+{% block sellerbody %}
+    <div class="container" style="padding: 10px">
+    <center>
+        <div class="row">
+            <div class="offset-4 col-md-3">
+                <h2 style="float: right">Delete Product</h2>
+            </div>
+            <div class="col-md-4">
+                <form method="post" action="{% url 'delete_pro' %}">
+                    {% csrf_token %}
+                    <button type="submit" style="float: right" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
+                <input type="text" placeholder="Search product" name="pid" style="float: right;padding: 6px;border-radius: 5px;border: 1px solid #486dff">
+                <small style="float: right;margin-right: 60px;color: #4d69eb">Product ID Number here.</small>
+                </form>
+            </div>
+        </div><hr>
+    </center>
+    {% if msg %}
+        <p style="text-align:center;background-color: #ccffd0;border: 1px dotted #4dff4d">{{ msg }}</p>
+    {% endif %}
+        {% if pro %}
+    <div class="row">
+    <div class="col-md-6" style="border-right: 1px solid green">
+        <center>
+        <img src="{{ pro.image1.url }}" style="padding: 10px;border: 5px solid whitesmoke">
+        <br><b>{{ pro.p_name }}</b>
+            </center>
+    </div>
+        <div class="col-md-6" style="margin-top: 50px">
+            <center>
+            <h3>Are you sure want to delete <span style="color: blue">{{ pro.title }}</span> product !</h3><br>
+            <a href="{% url 'delete' pro.p_id %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'delete_pro' %}" class="btn btn-info">Go Back</a>
+            </center>
+        </div>
+    </div>
+    {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,160 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+</head>
+<style>
+    @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+</style>
+<body>
+    {% include "header.html" %}
+    <!-- home Page -->
+    <!-- Start Header Jumbotron-->
+  <header class="jumbotron back-image" style="background-image: url({% static 'mobile-group.png' %});margin-top: 80px;background-size: 100%;height: 550px">
+  </header> <!-- End Header Jumbotron -->
+
+  <div class="container" id="about">
+    <!--Introduction Section-->
+    <div class="jumbotron">
+      <h3 class="text-center">E-Biding Services</h3>
+      <p>
+            We believe in the power of passionate people! Throughout the company’s history, we have
+            placed a lot of efforts in identifying smart and dynamic people, burning for self-improvement
+            and passionate about creating something significant together. This strategy has created a 
+            unique community of employees striving to challenge each other to continuously improve and move forward.
+
+            We feel that the best way to support our employees in their mission is to give autonomy, ownership
+             and a voice. All our employees are encouraged to satisfy their natural curiosity and grab hold of
+            projects they feel passionate about, we want them to contribute in their own unique way. We strive
+            to foster a culture of free and open communication and trust that our employees will forget about
+             hierarchy and focus on actively participating in our development no matter what their position is.
+            
+            Decision making is our strength, ensuring a dynamic and fast-paced environment, this has been 
+            instrumental in our successful growth. We understand that innovation requires a lot of work, 
+            and we will fail from time to time. After all, creating new and innovative solutions should 
+            not be easy to achieve.
+      </p><br>
+
+      <h3 class="text-center">Our Mission</h3>
+      <p>
+            Millions of Americans tried out 1st generation bidding fee auctions. Most lose money and 
+            had a poor experience. After a letdown experience, spending $50 on a pay-to-participate 
+            auction site with nothing to show for it, our founder decided to create a fair and honest
+            alternative to bidding fee auctions, where losing bidders don’t have to lose the money 
+            they spent bidding.
+      </p>
+    </div>
+  </div>
+  <!--Introduction Section End-->
+
+  <!-- User Resistation -->
+  <div class="container pt-5" id="registration">
+    <h2 class="text-center">Create an Account</h2>
+    <div class="row mt-4 mb-4">
+      <div class="col-md-6 offset-md-3">
+        <form action="{% url 'register' %}" class="shadow-lg p-4" method="post">
+            {% csrf_token %}
+            {% for x in messages %}
+            <p style="text-align: center;padding: 10px;margin-top: 10px;background-color: lightgoldenrodyellow;border: 1px dotted palevioletred">{{ x }}</p>
+            {% endfor %}
+          <div class="form-group">
+            <i class="fa fa-user" aria-hidden="true"></i><label class="pl-2 font-weight-bold">First Name</label><input type="text"
+              class="form-control" placeholder="First Name" name="name">
+          </div>
+        <div class="form-group">
+            <i class="fa fa-user" aria-hidden="true"></i><label class="pl-2 font-weight-bold">Last Name</label><input type="text"
+              class="form-control" placeholder="Last Name" name="lname">
+          </div>
+          <div class="form-group">
+                <i class="fa fa-phone" aria-hidden="true"></i><label class="pl-2 font-weight-bold">Phone No</label><input type="number"
+                  class="form-control" placeholder="Phone No" name="uphone">
+          </div>
+          <div class="form-group">
+            <img src="{% static 'email.png' %}" height="15px"><label class="pl-2 font-weight-bold">Email</label><input type="email"
+              class="form-control" placeholder="Email" name="uemail">
+            <!--Add text-white below if want text color white-->
+            <small class="form-text">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+                <i class="fa fa-user" aria-hidden="true"></i><label class="pl-2 font-weight-bold">User Name</label><input type="text"
+                  class="form-control" placeholder="Username" name="uname">
+           </div>
+
+          <div class="form-group">
+            <i class="fa fa-lock" aria-hidden="true"></i><label class="pl-2 font-weight-bold">New
+              Password</label><input type="password" class="form-control" placeholder="Password" name="upassword1">
+          </div>
+           <div class="form-group">
+            <i class="fa fa-lock" aria-hidden="true"></i><label class="pl-2 font-weight-bold">Confirm
+              Password</label><input type="password" class="form-control" placeholder="Password" name="upassword2">
+          </div>
+          <button type="submit" class="btn btn-danger mt-5 btn-block shadow-sm font-weight-bold">Sign Up</button>
+          <em style="font-size:10px;">Note - By clicking Sign Up, you agree to our Terms, Data
+            Policy and Cookie Policy.</em>
+          
+            <!-- Error message show here -->
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End User Resistation -->
+
+<div class="jumbotron">
+
+</div>
+
+    <!--Start Contact Us-->
+  <div class="container" id="Contact">
+    <!--Start Contact Us Container-->
+    <h2 class="text-center mb-4">Contact US</h2> <!-- Contact Us Heading -->
+    <div class="row">
+
+      <!--Start Contact Us Row-->
+<div class="col-md-8">
+    <!--Start Contact Us 1st Column-->
+    <form action="{% url 'complain' %}" method="post">
+    {% csrf_token %}
+     <input type="text" class="form-control" name="name" placeholder="Name"><br>
+     <input type="text" class="form-control" name="subject" placeholder="Subject"><br>
+     <input type="email" class="form-control" name="email" placeholder="E-mail"><br>
+     <textarea class="form-control" name="message" placeholder="How can we help you?" style="height:150px;"></textarea><br>
+     <input class="btn btn-primary" type="submit" value="Send">
+        <br><br>
+     <!-- error message show -->
+
+    </form>
+   </div> <!-- End Contact Us 1st Column-->
+
+      <div class="col-md-4 text-center">
+        <!-- Start Contact Us 2nd Column-->
+        <strong>Headquarter:</strong> <br>
+        E-biding Pvt Ltd, <br>
+        Ameerpet, Hyderabad<br>
+        Tamil Nadu - 834005 <br>
+        Phone: +00000000 <br>
+        <a href="#" target="_blank">www.ebiding.com</a> <br>
+
+        <br><br>
+        <strong>Odisha Branch:</strong> <br>
+        E-biding Pvt Ltd, <br>
+        Bhubaneswar, Odisha <br>
+        Odisha - 804002 <br>
+        Phone: +00000000 <br>
+        <a href="#" target="_blank">www.ebiding.com</a> <br>
+      </div> <!-- End Contact Us 2nd Column-->
+    </div> <!-- End Contact Us Row-->
+  </div> <!-- End Contact Us Container-->
+  <!-- End Contact Us -->
+    {% include "footer.html" %}
+</body>
+</html>

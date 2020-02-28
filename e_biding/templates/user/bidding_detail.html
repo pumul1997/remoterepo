@@ -1,0 +1,82 @@
+{% extends 'user/user_slidebar.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block userbody %}
+     <nav class="col-md-10" style="margin-top: 35px">
+         <h2>&xrArr; Product Detail &xlArr;</h2><hr>
+     <div class="container">
+<div class="row">
+    <div class="col-md-5" style="border: 5px solid whitesmoke;padding-bottom: 20px;padding-top: 20px">
+        <center>
+<div class="mySlides">
+    <div class="numbertext">1 / 3</div>
+  <img src="{{ pro.image1.url }}" width="250px" height="300px">
+    <br><br><b>{{ pro.p_name }}</b>
+</div>
+
+<div class="mySlides">
+    <div class="numbertext">2 / 3</div>
+  <img src="{{ pro.image2.url }}" width="250px" height="300px">
+    <br><br><b>{{ pro.p_name }}</b>
+</div>
+
+<div class="mySlides">
+    <div class="numbertext">3 / 3</div>
+  <img src="{{ pro.image3.url }}" width="250px" height="300px">
+    <br><br><b>{{ pro.p_name }}</b>
+</div>
+
+
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </center>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+</div>
+    <div class="offset-1 col-md-6">
+        <b>Name :</b>
+        <p>{{ pro.title }}</p>
+        <b>PRICE :</b>
+        <p>{{ pro.bid_price }}</p>
+        <b>DISCRIPTION :</b>
+        <p>{{ pro.disc }}</p>
+    </div>
+</div>
+     </div>
+<br>
+     <center>
+     <h2>&xrArr; Bidding Details &xlArr;</h2><hr>
+     {% if msg %}
+     <p style="text-align: center">{{ msg }}</p>
+     {% endif %}
+     {% if b_detail %}
+                     <table class="table table-bordered" style="text-align: center">
+                         <tr class="bg-info">
+                             <th>Product Name</th>
+                             <th>Amount</th>
+                             <th>Date</th>
+                             <th>Time</th>
+                             <th>User</th>
+                         </tr>
+                         {% for x in b_detail %}
+                             <tr>
+                             <th>{{ x.product.p_name }}</th>
+                             <th>{{ x.amount }}</th>
+                             <th>{{ x.date }}</th>
+                             <th>{{ x.time }}</th>
+                                 <th><b style="background-color: yellow">{{ x.user.name }}</b></th>
+                         </tr>
+                         {% endfor %}
+                     </table>
+     {% endif %}
+     </center>
+     </nav>
+{% endblock %}
+
+
+</body>
+</html>

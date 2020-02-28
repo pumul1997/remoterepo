@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style>
+    @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+    .custom-margin {
+         margin-top: 8vh;
+      }
+    input{
+    border: none;
+    outline: none;
+    background: none;
+    color: darkslategray;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 13px 0;
+    overflow: hidden;
+    border-bottom: 1px solid #4caf50;
+}
+    i{
+    width: 26px;
+    float: left;
+    text-align: center;
+    }
+   </style>
+  <title>Login</title>
+</head>
+
+<body>
+{% include 'header.html' %}
+  <div class="mb-3 text-center mt-5" style="font-size: 30px;">
+    <br><span>Online Auction Management System</span>
+  </div>
+  <p class="text-center" style="font-size: 20px;"><span>Login
+      Here</span>
+  </p>
+            {% if msg %}
+            <p style="text-align: center;padding: 10px;margin-top: 30px;background-color: #ccffcc;border: 1px dotted #4dff4d">{{ msg }}</p>
+            {% endif %}
+  <div class="container-fluid mb-5">
+    <div class="row justify-content-center custom-margin">
+      <div class="col-sm-6 col-md-4">
+        <form action="{% url 'user_login' %}" class="shadow-lg p-4" method="post">
+            {% csrf_token %}
+          <div class="form-group">
+              <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="email"  placeholder="Email" name="uemail">
+            <!--Add text-white below if want text color white-->
+            <small class="form-text">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password"  placeholder="Password" name="upassword">
+          </div>
+          <button type="submit" class="btn btn-outline-success mt-3 btn-block shadow-sm font-weight-bold">Login</button>
+{#          error message show#}
+            {% for x in messages %}
+            <p style="text-align: center;padding: 10px;margin-top: 10px;background-color: lightgoldenrodyellow;border: 1px dotted palevioletred">{{ x }}</p>
+            {% endfor %}
+        </form>
+        <div class="text-center"><a class="btn btn-info mt-3 shadow-sm font-weight-bold" href="/">Back
+            to Home</a></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

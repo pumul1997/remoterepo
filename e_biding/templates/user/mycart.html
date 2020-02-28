@@ -1,0 +1,72 @@
+{% extends 'user/user_slidebar.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block userbody %}
+     <nav class="col-md-10" style="margin-top: 15px">
+     <center>
+         <h2 style="text-align: center">My Orders</h2><hr>
+         {% if msg %}
+        <p style="text-align:center;background-color: #ccffd0;border: 1px dotted #4dff4d">{{ msg }}</p>
+        {% endif %}
+     </center>
+     {% if order %}
+         <div class="container">
+         {% for x in order %}
+         {% if x.o_status == "not_purchase" %}
+             <div class="row">
+             <div class="col-md-3">
+                 <img src="{{ x.product.image1.url }}" style="padding: 20px" height="400px">
+             </div>
+             <div class="col-md-6">
+                 <h5 style="padding-top: 20px;text-decoration: underline">{{ x.product.p_name }} :</h5>
+                 <p>{{ x.product.title }}</p>
+                 <h5 style="text-decoration: underline">Original Price :</h5>
+                 <p>{{ x.product.bid_price }}</p>
+                 <h5 style="text-decoration: underline">Final Price :</h5>
+                 <p>{{ x.final_price }}</p>
+                 <h5 style="text-decoration: underline">Description :</h5>
+                 <p>{{ x.product.disc }}</p>
+             </div>
+             <div class="col-md-2">
+                 <a class="btn btn-warning" href="{% url 'checkout_page' x.o_id %}" style="margin-bottom: -650px">Proceed to pay</a>
+             </div>
+             <div class="col-md-1">
+                 <a class="btn btn-primary" href="" style="margin-bottom: -650px">Back</a>
+             </div>
+             </div><hr>
+             {% elif x.o_status == "purchased" %}
+             <div class="row">
+             <div class="col-md-3">
+                 <img src="{{ x.product.image1.url }}" style="padding: 20px" height="400px">
+             </div>
+             <div class="col-md-6">
+                 <h5 style="padding-top: 20px;text-decoration: underline">{{ x.product.p_name }} :</h5>
+                 <p>{{ x.product.title }}</p>
+                 <h5 style="text-decoration: underline">Original Price :</h5>
+                 <p>{{ x.product.bid_price }}</p>
+                 <h5 style="text-decoration: underline">Final Price :</h5>
+                 <p>{{ x.final_price }}</p>
+                 <h5 style="text-decoration: underline">Description :</h5>
+                 <p>{{ x.product.disc }}</p>
+             </div>
+             <div class="col-md-3">
+                 <h5 style="text-decoration: underline">Delivery :</h5>
+                 <small>Delivery to you soon..</small>
+                 <img src="{% static 'download.png' %}" width="200px">
+                 <small>Track Your order Here.</small>
+             </div>
+             </div><hr>
+             {% endif %}
+         {% endfor %}
+         </div>
+     {% endif %}
+     </nav>
+{% endblock %}
+</body>
+</html>

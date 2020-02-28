@@ -1,0 +1,82 @@
+{% extends 'user/user_slidebar.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block userbody %}
+     <nav class="col-md-10" style="margin-top: 35px">
+     <center>
+         <h2>&xrArr; ALL PRODUCT'S &xlArr;</h2><hr>
+     <p style="background-color: rgba(233,51,65,0.74)">Hurry up  <span id="demo" style="color: yellow"></span> Left !</p>
+         {% for msg in messages %}
+            <p style="color: red;text-align: center">{{ msg }}</p>
+        {% endfor %}
+         <div class="container">
+             <div class="row">
+                 {% for x in all %}
+                 <div class="col-md-3" style="margin-bottom: 50px">
+                 <div style="background-color: #dedede;padding-top: 20px;height: 440px">
+                     <center>
+                         <a href="{% url 'bidding_details' x.product_id %}">
+                 <img src="{{ x.product.image1.url }}" height="250" width="150">
+                         </a>
+                     <table style="text-align: center">
+                         <tr><th>{{ x.product.p_name }}</th></tr>
+                         <tr><th style="color: blue;height: 50px">{{ x.product.title }}</th></tr>
+                         <tr><th>Price : {{ x.max_amount }}</th></tr>
+
+                         <tr>
+                             <form method="post" action="{% url 'bidding_process' %}">
+                                 {% csrf_token %}
+                                 <input value="{{ x.product_id }}" name="pid" hidden>
+                             <th><input type="number" name="bprice" style="border: 1px solid mediumvioletred;border-radius: 5px">
+                             <button style="color: mediumblue;border-radius: 10px">BID</button></th>
+                                 </form>
+
+                         </tr>
+                     </table>
+                     </center>
+                 </div>
+                 </div>
+                 {% endfor %}
+             </div>
+         </div>
+     </center>
+     </nav>
+    <script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 1, 2020 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d : " + hours + "h : "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+{% endblock %}
+</body>
+</html>

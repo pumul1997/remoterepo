@@ -1,0 +1,28 @@
+{% extends 'user/user_slidebar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block userbody %}
+     <nav class="col-md-10" style="margin-top: 15px;">
+     <div class="row" style="background-color: rgba(255,240,220,0.33);">
+         <div class="col-md-4">
+             <a href="{% url 'upload' %}"><img src="{{ data.image.url }}" height="200px" width="250px" style="border: 5px solid rgba(255,231,183,0.54);border-left: 5px solid rgba(255,231,183,0.54);margin-left: -15px;border-top: 5px solid rgba(255,231,183,0.54);"></a>
+         </div>
+     </div>
+     <div class="row" style="">
+         <div class="col-md-12">
+             <br><h4 style="color: blue"><span style="color: black">Name : </span>{{ data.name }}<a href="" style="color: darkslategray;text-decoration: none;margin-left: 10px" class="fa fa-edit"></a></h4>
+             <br><h4 style="color: blue"><span style="color: black">Phone No : </span>{{ data.phone }}<a href="" style="color: darkslategray;text-decoration: none;margin-left: 10px" class="fa fa-edit"></a></h4>
+             <br><h4 style="color: blue"><span style="color: black">Email Id : </span>{{ data.email }}<a href="" style="color: darkslategray;text-decoration: none;margin-left: 10px" class="fa fa-edit"></a></h4>
+             <br><h4 style="color: blue"><span style="color: black">User Name : </span>{{ data.username }}<a href="" style="color: darkslategray;text-decoration: none;margin-left: 10px" class="fa fa-edit"></a></h4>
+             <br><h4 style="color: blue"><span style="color: black">Date Of Join : </span>{{ data.doj }}</h4>
+         </div>
+     </div>
+     </nav>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+</style>
+<body>
+{% include 'admin/admin_hader.html' %}
+
+<!-- Side Bar -->
+ <div class="container-fluid mb-5" style="margin-top:40px;">
+  <div class="row">
+   <nav class="col-sm-3 col-md-2 bg-light sidebar py-5 d-print-none">
+    <div class="sidebar-sticky">
+     <ul class="nav flex-column">
+         <li class="nav-item">
+       <a class="nav-link" href="{% url 'welcome' %}">
+           <i class="fa fa-home"></i>
+        Home
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link active" href="{% url 'pending_req' %}">
+           <i class="fa fa-list"></i>
+        Pending Request
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="{% url 'approved_req' %}">
+           <i class="fa fa-check-circle"></i>
+        Approve User List
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="{% url 'declined_req' %}">
+           <i class="fa fa-cut"></i>
+        Declined User List
+       </a>
+      </li>
+         <li class="nav-item">
+       <a class="nav-link" href="{% url 'complain' %}">
+           <i class="fa fa-comments"></i>
+        Complains
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="#">
+           <i class="fa fa-shopping-cart"></i>
+        Sell Report
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="#">
+           <i class="fa fa-credit-card"></i>
+        Work Report
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="{% url 'change_pass' %}">
+           <i class="fa fa-lock"></i>
+        Change Password
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="{% url 'admin_logout' %}" style="margin-bottom: 80px">
+           <i class="fa fa-sign-out"></i>
+        Logout
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+
+  {% block adminbody %}
+
+  {% endblock %}
+  </div>
+ </div>
+
+{% include 'footer.html' %}
+</body>
+</html>

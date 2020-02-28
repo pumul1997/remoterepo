@@ -1,0 +1,217 @@
+{% extends 'user/user_slidebar.html' %}
+{% load staticfiles %}
+{% block userbody %}
+     <nav class="col-md-10" style="">
+    <div class="container">
+
+      <!-- Heading -->
+      <h2 class="my-5 h2 text-center">Checkout form</h2>
+
+      <!--Grid row-->
+      <div class="row">
+
+        <!--Grid column-->
+        <div class="offset-1 col-md-10 mb-4">
+
+          <!--Card-->
+          <div class="card shadow-lg p-4">
+
+            <!--Card content-->
+            <form class="card-body" action="{% url 'checkout' %}" method="post">
+                {% csrf_token %}
+
+              <!--Grid row-->
+              <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-2">
+
+                  <!--firstName-->
+                  <div class="md-form ">
+                    <input type="text" class="form-control" name="fname" value="{{ data.name }}" readonly>
+                    <b>First name</b>
+                  </div>
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-2">
+
+                  <!--lastName-->
+                  <div class="md-form">
+                    <input type="text" class="form-control" name="lname" value="{{ data.lname }}" readonly>
+                    <b>Last name</b>
+                  </div>
+
+                </div>
+                <!--Grid column-->
+
+              </div><br>
+              <!--Grid row-->
+
+              <!--email-->
+               <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-2">
+
+                  <!--firstName-->
+                  <div class="md-form ">
+                    <input type="text" class="form-control" name="email" value="{{ data.email }}" readonly>
+                    <b>Email</b>
+                  </div>
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-2">
+
+                  <!--lastName-->
+                  <div class="md-form">
+                    <input type="text" class="form-control" name="phone" value="{{ data.phone }}">
+                    <b>Contact</b><small style="margin-left: 10px">you can change here.</small>
+                  </div>
+
+                </div>
+                <!--Grid column-->
+
+              </div><br>
+
+              <!--address-->
+              <div class="md-form mb-5">
+                <input type="text" class="form-control" name="add" placeholder="Area or city..">
+                <b>Address</b>
+              </div>
+
+              <!--address-2-->
+              <div class="md-form mb-5">
+                <input type="text" id="address-2" class="form-control" name="add2" placeholder="Apartment or suite..">
+                <b>Address 2 (optional)</b>
+              </div>
+
+              <!--Grid row-->
+              <div class="row">
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4">
+
+                  <b>Country</b>
+                  <select class="custom-select d-block w-100" name="country" required>
+                    <option>Choose...</option>
+                    <option value="US">United States</option>
+                    <option value="IND">India</option>
+                    <option value="ENG">England</option>
+                    <option value="ERP">Europe</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please select a valid country.
+                  </div>
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                  <b>State</b>
+                  <select class="custom-select d-block w-100" name="state" id="state" required>
+                    <option>Choose...</option>
+                    <option value="california">California</option>
+                    <option value="odisha">Odisha</option>
+                    <option value="bangalore">Bangalore</option>
+                    <option value="hyderabad">Hyderabad</option>
+                    <option value="mumbai">Mumbai</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide a valid state.
+                  </div>
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                  <b>Zip</b>
+                  <input type="text" class="form-control" id="zip" name="zip" required>
+                  <div class="invalid-feedback">
+                    Zip code required.
+                  </div>
+
+                </div>
+                <!--Grid column-->
+
+              </div>
+              <!--Grid row-->
+
+              <hr>
+              <label>Total Balance: </label>
+              <input type="number" name="balance" class="form-control" value="{{ order.final_price }}" readonly>
+              <input type="number" name="o_id" value="{{ order.o_id }}" hidden>
+
+              <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                  <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked>
+                  <label class="custom-control-label" for="credit">Credit card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="debit" name="paymentMethod" type="radio" class="custom-control-input">
+                  <label class="custom-control-label" for="debit">Debit card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input">
+                  <label class="custom-control-label" for="paypal">Cash On Delevery</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="cc-name">Name on card</label>
+                  <input type="text" name="card_name" class="form-control" required>
+                  <small class="text-muted">Full name as displayed on card</small>
+                  <div class="invalid-feedback">
+                    Name on card is required
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="cc-number">Credit card number</label>
+                  <input type="number" name="card_number" class="form-control" required>
+                  <div class="invalid-feedback">
+                    Credit card number is required
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <label for="cc-expiration">Expiration</label>
+                  <input type="text" name="card_exp" class="form-control" required>
+                  <div class="invalid-feedback">
+                    Expiration date required
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label>CVV</label>
+                  <input type="password" name="card_cvv" class="form-control" required>
+                  <div class="invalid-feedback">
+                    Security code required
+                  </div>
+                </div>
+              </div>
+              <hr class="mb-4">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+
+            </form>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+     </nav>
+{% endblock %}

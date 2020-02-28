@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Start Navigation -->
+  <nav class="navbar navbar-expand-sm navbar-dark pl-5 fixed-top" style="background-color: #80782c;padding: 20px">
+    <a href="/" class="navbar-brand">E Biding</a>
+    <span class="navbar-text">Customer's Happiness is our Aim</span>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="myMenu">
+      <ul class="navbar-nav pl-5 custom-nav">
+        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="{% url 'registration_page' %}" class="nav-link">Registration</a></li>
+        <li class="nav-item"><a href="{% url 'user_login' %}" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav> <!-- End Navigation -->
+</body>
+</html>

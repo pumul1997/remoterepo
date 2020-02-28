@@ -1,0 +1,34 @@
+{% extends 'user/user_slidebar.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block userbody %}
+     <nav class="col-md-10" style="margin-top: 15px">
+     <center>
+
+         <nav style="border-bottom: 2px solid rgba(188,183,255,0.69);padding: 10px;">
+             <a class="btn btn-outline-dark" href="">Home</a>
+             <a class="btn btn-outline-primary" href="{% url 'add_product' %}">Add Product</a>
+             <a class="btn btn-outline-success" href="{% url 'my_product' %}">My Product's</a>
+             <a class="btn btn-outline-warning" href="{% url 'update_pro' %}">Update Product</a>
+             <a class="btn btn-outline-danger" href="{% url 'delete_pro' %}">Delete Product</a>
+             <a type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" href="">Product Status </a>
+             <div class="dropdown-menu bg-info">
+                 <a class="dropdown-item" style="border-bottom: 2px solid whitesmoke" href="{% url 'bid_product' %}">Bid Product's</a>
+                 <a class="dropdown-item" style="border-bottom: 2px solid whitesmoke" href="{% url 'not_bid_product' %}">Not Bid Product's</a>
+                 <a class="dropdown-item" href="{% url 'sold_product' %}">Sold Product</a>
+             </div>
+         </nav>
+     </center>
+     {% block sellerbody %}
+
+     {% endblock %}
+     </nav>
+{% endblock %}
+</body>
+</html>
